@@ -6,18 +6,21 @@ import java.util.Map;
 public class RebelPersistence {
 
     private static Map<String, Rebel> rebels = new HashMap<>();
-    private static Map<String, Rebel> trators = new HashMap<>();
+    private static Map<String, Rebel> traitors = new HashMap<>();
 
     public Rebel save(Rebel rebel) {
         rebels.put(rebel.getName(), rebel);
         return rebel;
     }
 
-    public void delete(Rebel rebel) {
+    public void saveTraitor(Rebel rebel) {
         rebels.remove(rebel.getName());
-        trators.put(rebel.getName(), rebel);
+        traitors.put(rebel.getName(), rebel);
     }
 
+    public Rebel get(Rebel rebel){
+        return rebels.get(rebel.getName());
+    }
     //porcentagem de traidores
     //porcentagem de rebeldes
     //Quantidade média de cada tipo de recurso por rebelde (Ex: 2 armas por rebelde).
