@@ -4,19 +4,11 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-<<<<<<< HEAD
 @AllArgsConstructor
 @Builder
+
 public class Rebel {
-    public Long id;
-    public String name;
-    public String gender;
-    public int age;
-    public Location location;
-    public Inventory inventory;
-    public boolean trator = false;
-=======
-public class Rebel {
+    private Long id;
     private String name;
     private String gender;
     private int age;
@@ -32,5 +24,9 @@ public class Rebel {
         this.location = location;
         this.inventory = inventory;
     }
->>>>>>> 48a395bb05bc659c2358d2dae6c46191a7bdb07d
+
 }
+
+
+
+

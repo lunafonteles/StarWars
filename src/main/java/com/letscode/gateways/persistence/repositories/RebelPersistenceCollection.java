@@ -1,9 +1,9 @@
-package com.letscode.persistence;
+package com.letscode.gateways.persistence.repositories;
 import com.letscode.domains.Rebel;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RebelPersistence {
+public class RebelPersistenceCollection {
 
     private static Map<String, Rebel> rebels = new HashMap<>();
     private static Map<String, Rebel> traitors = new HashMap<>();
