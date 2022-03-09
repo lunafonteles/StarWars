@@ -1,15 +1,23 @@
 package com.letscode.domains;
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class Inventory {
 
-    public String item;
-    public int amount;
-    public int points;
+    private int gunsAmount;
+    private int munitionAmount;
+    private int waterAmount;
+    private int foodAmount;
+    private int points;
 
+    public Inventory(int gunsAmount, int munitionAmount, int waterAmount, int foodAmount) {
+        this.gunsAmount = gunsAmount;
+        this.munitionAmount = munitionAmount;
+        this.waterAmount = waterAmount;
+        this.foodAmount = foodAmount;
+        this.points = (gunsAmount * 4) + (munitionAmount * 3) + (waterAmount * 2) + (foodAmount);
+    }
 }
 
 //obrigatorio ser criado junto c rebelde, n sei se tem q ser sempre igual
