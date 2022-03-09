@@ -1,10 +1,13 @@
 package com.letscode.domains;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
+@Builder
 public class Rebel {
+    public Long id;
     public String name;
     public String gender;
     public int age;

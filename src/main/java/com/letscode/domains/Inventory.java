@@ -2,13 +2,13 @@ package com.letscode.domains;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 public class Inventory {
 
-    public String item;
-    public int amount;
-    public int points;
+    public List<Item> item;
 
 }
 

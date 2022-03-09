@@ -1,13 +1,17 @@
 package com.letscode.usecases;
 import com.letscode.domains.Rebel;
-import com.letscode.persistence.RebelPersistence;
+import com.letscode.gateways.persistence.RebelPersistenceH2;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@RequiredArgsConstructor
+@Service
 public class CreateRebel {
 
-    private RebelPersistence rebelPersistence;
+    private RebelPersistenceH2 rebelPersistenceH2;
 
     public Rebel create(Rebel rebel) {
-        return rebelPersistence.save(rebel);
+        return rebelPersistenceH2.save(rebel);
     }
 
 }
