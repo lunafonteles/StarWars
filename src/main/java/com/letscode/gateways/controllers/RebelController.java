@@ -50,15 +50,18 @@ public class RebelController {
         return new LocationResponse(locationSaved);
     }
 
-/*    @PutMapping(path = "/trade",
+    @PutMapping(path = "/trade",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public InventoryResponse tradeItems (@PathVariable("tarde") Long id, @RequestBody InventoryRequest inventoryRequest) {
         Inventory inventory = inventoryRequest.toDomain();
         inventory.setItem(inventory.getItem());
-    }*/
-    //rever
+
+        Inventory inventorySaved = tradeItems.execute(inventory);
+        return new InventoryResponse((inventorySaved));
+    }
+
 
     //falta o reportRebelAsTraitor()
 

@@ -2,7 +2,11 @@ package com.letscode.usecases;
 
 import com.letscode.domains.Rebel;
 import com.letscode.gateways.persistence.repositories.RebelPersistenceCollection;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class ReportRebelAsTraitor {
 
     //se 3 rebeldes reportarem uma pessoa, ela se torna traidora
