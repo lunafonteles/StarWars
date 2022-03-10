@@ -1,4 +1,5 @@
 package com.letscode.gateways.persistence;
+import com.letscode.domains.Inventory;
 import com.letscode.domains.Location;
 import com.letscode.domains.Rebel;
 import com.letscode.gateways.RebelPersistenceGateway;
@@ -34,12 +35,13 @@ public class RebelPersistenceCollection implements RebelPersistenceGateway {
 
     @Override
     public Location updateLocation(Location location) {
-        location.setLatitude(location.getLatitude());
-        location.setLongitude(location.getLongitude());
-        location.setBase(location.getBase());
         locations.put(location.getId(), location);
-
         return location;
+    }
+
+    @Override
+    public Rebel tradeItems(Inventory inventory) {
+        return null;
     }
 
     @Override

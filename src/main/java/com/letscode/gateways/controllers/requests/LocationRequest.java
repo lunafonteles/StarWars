@@ -13,7 +13,7 @@ public class LocationRequest {
     private Float latitude;
     @ApiModelProperty(required = true, value = "Longitude do rebelde", example = "45,45")
     private Float longitude;
-    @ApiModelProperty(required = true, value = "Base da galaxia", example = "seila")
+    @ApiModelProperty(required = true, value = "Base da galaxia", example = "terra")
     private String base;
 
     public Location toDomain() {

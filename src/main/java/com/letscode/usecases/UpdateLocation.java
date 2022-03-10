@@ -6,6 +6,8 @@ import com.letscode.gateways.RebelPersistenceGateway;
 import com.letscode.usecases.validators.UpdateLocationValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import lombok.val;
+
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class UpdateLocation {
     private final UpdateLocationValidator updateLocationValidator;
 
     public Location update(Location location) {
-        List<String> validationErrors = updateLocationValidator.validate(location);
+        val validationErrors = updateLocationValidator.validate(location);
 
         if (!validationErrors.isEmpty()) {
             throw new ValidationException(validationErrors);

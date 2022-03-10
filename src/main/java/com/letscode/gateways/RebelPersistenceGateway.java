@@ -1,5 +1,6 @@
 package com.letscode.gateways;
 
+import com.letscode.domains.Inventory;
 import com.letscode.domains.Location;
 import com.letscode.domains.Rebel;
 
@@ -10,6 +11,7 @@ public interface RebelPersistenceGateway {
 
     Rebel save(Rebel rebel);
     Location updateLocation(Location location);
+    Rebel tradeItems(Inventory inventory);
     boolean existsById(Long id);
     void saveTraitor(Rebel rebel);
     Rebel getByName(Rebel rebel);
