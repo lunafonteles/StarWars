@@ -11,5 +11,4 @@ public class Item {
 
     private String name;
     private int amount;
-    //private int points;
 }

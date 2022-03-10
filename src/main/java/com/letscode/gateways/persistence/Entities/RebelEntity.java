@@ -19,7 +19,7 @@ public class RebelEntity {
     @Column(name = "GENDER")
     public String gender;
     @Column(name = "AGE")
-    public int age;
+    public Integer age;
     //@OneToOne
     //public Location location;
     //@OneToOne(mappedBy = "rebel", cascade = CascadeType.ALL)

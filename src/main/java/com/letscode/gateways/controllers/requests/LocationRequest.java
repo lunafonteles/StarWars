@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 public class LocationRequest {
 
     @ApiModelProperty(required = true, value = "Latitude do rebelde", example = "41,54")
-    private float latitude;
+    private Float latitude;
     @ApiModelProperty(required = true, value = "Longitude do rebelde", example = "45,45")
-    private float longitude;
+    private Float longitude;
     @ApiModelProperty(required = true, value = "Base da galaxia", example = "seila")
     private String base;
 

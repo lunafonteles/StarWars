@@ -36,21 +36,18 @@ public class RebelController {
         return new RebelResponse(rebelSaved);
     }
 
-    @PutMapping(path = "/{id}",
+    @PutMapping(path = "/location",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public LocationResponse updateLocation (@PathVariable("id") Long id, @RequestBody LocationRequest locationRequest) {
+    public LocationResponse updateLocation (@RequestBody LocationRequest locationRequest) {
         Location location = locationRequest.toDomain();
-        location.setLatitude(location.getLatitude());
-        location.setLongitude(location.getLongitude());
-        location.setBase(location.getBase());
 
         Location locationSaved = updateLocation.update(location);
         return new LocationResponse(locationSaved);
     }
 
-    @PutMapping(path = "/trade",
+/*    @PutMapping(path = "/trade",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -60,7 +57,7 @@ public class RebelController {
 
         Inventory inventorySaved = tradeItems.execute(inventory);
         return new InventoryResponse((inventorySaved));
-    }
+    }*/
 
 
     //falta o reportRebelAsTraitor()

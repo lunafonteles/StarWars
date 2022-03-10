@@ -12,7 +12,7 @@ public class InventoryResponse {
     private List<Item> item;
 
     public InventoryResponse(Inventory inventory) {
-        id = inventory.getId();
-        item = inventory.getItem();
+/*        id = inventory.getId();
+        item = inventory.getItem();*/
     }
 }

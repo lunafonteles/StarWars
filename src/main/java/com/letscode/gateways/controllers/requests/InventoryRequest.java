@@ -16,10 +16,10 @@ public class InventoryRequest {
     @ApiModelProperty(required = true, value = "Items", example = "nome, quantidade")
     private List<ItemRequest> item;
 
-    public Inventory toDomain() {
+/*    public Inventory toDomain() {
         return Inventory.builder()
                 .id(id)
                 .item(item.stream().map(ItemRequest::toDomain).collect(Collectors.toList()))
                 .build();
-    }
+    }*/
 }

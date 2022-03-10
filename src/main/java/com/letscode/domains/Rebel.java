@@ -11,7 +11,7 @@ public class Rebel {
     private Long id;
     private String name;
     private String gender;
-    private int age;
+    private Integer age;
     private Location location;
     private Inventory inventory;
     private boolean isTraitor = false;

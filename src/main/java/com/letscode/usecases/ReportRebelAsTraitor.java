@@ -1,7 +1,8 @@
 package com.letscode.usecases;
 
 import com.letscode.domains.Rebel;
-import com.letscode.gateways.persistence.repositories.RebelPersistenceCollection;
+import com.letscode.gateways.RebelPersistenceGateway;
+import com.letscode.gateways.persistence.RebelPersistenceCollection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,10 @@ public class ReportRebelAsTraitor {
     //se 3 rebeldes reportarem uma pessoa, ela se torna traidora
     //não pode negociar recursos nem manipular inventário, nem ser exibido em relatórios.
     //
-    public RebelPersistenceCollection rebelPersistenceCollection;
+    public RebelPersistenceGateway rebelPersistenceGateway;
 
     public void reportTraitor (Rebel rebel){
-        Rebel accusedRebel = rebelPersistenceCollection.get(rebel); //apenas se o rebelde não já ser traidor
+        Rebel accusedRebel = rebelPersistenceGateway.getByName(rebel); //apenas se o rebelde não já ser traidor
         int accusationsAmount = accusedRebel.getAccusationsAmount();
 
         if(accusationsAmount < 2){
@@ -24,7 +25,7 @@ public class ReportRebelAsTraitor {
         else if(accusationsAmount == 2){
             accusedRebel.setAccusationsAmount(accusationsAmount + 1);
             accusedRebel.setTraitor(true);
-            rebelPersistenceCollection.saveTraitor(accusedRebel);
+            rebelPersistenceGateway.saveTraitor(accusedRebel);
         }
     }
 }

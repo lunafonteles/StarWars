@@ -10,7 +10,7 @@ public class RebelResponse {
 
     private Long id;
     private String name;
-    private int age;
+    private Integer age;
     private String gender;
     private Location location;
     private Inventory inventory;
