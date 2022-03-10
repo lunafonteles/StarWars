@@ -1,6 +1,10 @@
 package com.letscode.domains;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class Inventory {
@@ -10,6 +14,12 @@ public class Inventory {
     private int waterAmount;
     private int foodAmount;
     private int points;
+
+//@AllArgsConstructor
+//@Builder
+//public class Inventory {
+//    private Long id;
+//    private List<Item> item;
 
     public Inventory(int gunsAmount, int munitionAmount, int waterAmount, int foodAmount) {
         this.gunsAmount = gunsAmount;
