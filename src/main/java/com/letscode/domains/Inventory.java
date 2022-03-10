@@ -1,14 +1,16 @@
 package com.letscode.domains;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
 @AllArgsConstructor
+@Builder
 public class Inventory {
-
-    public List<Item> item;
+    private Long id;
+    private List<Item> item;
 
 }
 

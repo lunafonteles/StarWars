@@ -17,13 +17,13 @@ public class Rebel {
     private boolean isTraitor = false;
     private int accusationsAmount = 0;
 
-    public Rebel(String name, String gender, int age, Location location, Inventory inventory) {
-        this.name = name;
-        this.gender = gender;
-        this.age = age;
-        this.location = location;
-        this.inventory = inventory;
-    }
+    //public Rebel(String name, String gender, int age, Location location, Inventory inventory) {
+        //this.name = name;
+        //this.gender = gender;
+        //this.age = age;
+        //this.location = location;
+        //this.inventory = inventory;
+    //}
 
 }
 

@@ -1,13 +1,15 @@
 package com.letscode.domains;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
+@Builder
 public class Item {
 
-    public String item;
-    public int amount;
-    public int points;
+    private String name;
+    private int amount;
+    //private int points;
 }
