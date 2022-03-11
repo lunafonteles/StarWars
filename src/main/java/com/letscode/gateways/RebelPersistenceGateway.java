@@ -10,11 +10,11 @@ import java.util.Optional;
 public interface RebelPersistenceGateway {
 
     Rebel save(Rebel rebel);
-    Location updateLocation(Location location);
+    Rebel updateLocation(Location location, Long rebelId);
     Rebel tradeItems(Inventory inventory);
     boolean existsById(Long id);
     void saveTraitor(Rebel rebel);
     Rebel getByName(Rebel rebel);
-    List<Rebel> findAll();
-    //Optional<Rebel> findById(Long id);
+    List<Rebel> getAll();
+    Optional<Rebel> getById(Long id);
 }

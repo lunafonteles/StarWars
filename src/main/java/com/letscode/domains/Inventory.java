@@ -16,13 +16,7 @@ public class Inventory {
     private int foodAmount;
     private int points;
 
-//@AllArgsConstructor
-//@Builder
-//public class Inventory {
-//    private Long id;
-//    private List<Item> item;
-
-    public Inventory(int gunsAmount, int munitionAmount, int waterAmount, int foodAmount) {
+    public Inventory(int gunsAmount, int munitionAmount, int waterAmount, int foodAmount, int points) {
         this.gunsAmount = gunsAmount;
         this.munitionAmount = munitionAmount;
         this.waterAmount = waterAmount;

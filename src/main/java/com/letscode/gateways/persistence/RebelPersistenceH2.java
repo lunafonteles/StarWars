@@ -36,7 +36,7 @@ public class RebelPersistenceH2 implements RebelPersistenceGateway {
     }
 
     @Override
-    public List<Rebel> findAll() {
+    public List<Rebel> getAll() {
         return rebelH2Repository.findAll().stream().map(RebelEntity::toDomain).collect(Collectors.toList());
     }
 
@@ -45,15 +45,15 @@ public class RebelPersistenceH2 implements RebelPersistenceGateway {
         return false;
     }
 
-/*    @Override
-    public Optional<Rebel>findById(Long id) {
+    @Override
+    public Optional<Rebel>getById(Long id) {
         return Optional.empty();
-    }*/
+    }
 
     @Override
-    public Location updateLocation(Location location){
-        //LocationEntity locationEntity = rebelH2Repository.save(new LocationEntity(location));
-        //return locationEntity.toDomain();
+    public Rebel updateLocation(Location location, Long id){
+//        RebelEntity rebelEntity = rebelH2Repository.save(new RebelEntity(rebel));
+//        return rebelEntity.toDomain();
         return null;
     }
 

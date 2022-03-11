@@ -17,9 +17,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RebelPersistenceCollection implements RebelPersistenceGateway {
 
-    private static Map<String, Rebel> rebels = new HashMap<>();
+    private static Map<Long, Rebel> rebels = new HashMap<>();
     private static Map<String, Rebel> traitors = new HashMap<>();
-    private static Map<Long, Location> locations = new HashMap<>();
+    private static Map<Long, Rebel> locations = new HashMap<>();
     private static Long rebelId = 1L;
 
     @Override
@@ -29,19 +29,24 @@ public class RebelPersistenceCollection implements RebelPersistenceGateway {
             rebel.setId(rebelId++);
         }
 
-        rebels.put(rebel.getName(), rebel);
+        rebels.put(rebel.getId(), rebel);
         return rebel;
     }
 
     @Override
-    public Location updateLocation(Location location) {
-        locations.put(location.getId(), location);
-        return location;
+    public Rebel updateLocation(Location location, Long id) {
+
+        Rebel rebel = rebels.get(id);
+        rebel.setLocation(location);
+        rebels.put(rebel.getId(), rebel);
+
+        return rebel;
     }
 
     @Override
     public Rebel tradeItems(Inventory inventory) {
         return null;
+        //todo
     }
 
     @Override
@@ -50,27 +55,29 @@ public class RebelPersistenceCollection implements RebelPersistenceGateway {
     }
 
     @Override
-    public List<Rebel> findAll() {
+    public List<Rebel> getAll() {
         return null;
-        //fazer
+        //todo
     }
 
-/*    @Override
-    public Optional<Rebel> findById(Long id) {
-        return Optional.empty();
-    }*/
+    @Override
+    public Optional<Rebel> getById(Long id) {
+        return Optional.ofNullable(rebels.get(id));
+    }
 
+    @Override
     public void saveTraitor(Rebel rebel) {
         rebels.remove(rebel.getName());
         traitors.put(rebel.getName(), rebel);
     }
 
+    @Override
     public Rebel getByName(Rebel rebel){
         return rebels.get(rebel.getName());
     }
 
-    //porcentagem de traidores
-    //porcentagem de rebeldes
+    //todo: porcentagem de traidores
+    //todo: porcentagem de rebeldes
     //Quantidade média de cada tipo de recurso por rebelde (Ex: 2 armas por rebelde).
     //Pontos perdidos devido a traidores. obs: como sao esses pontos?
     //outros requisitos: documentar endpoints e fornecer forma de usa-los

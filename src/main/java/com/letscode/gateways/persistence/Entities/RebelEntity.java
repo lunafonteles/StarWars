@@ -21,7 +21,7 @@ public class RebelEntity {
     @Column(name = "AGE")
     public Integer age;
     //@OneToOne
-    //public Location location;
+//    public Location location;
     //@OneToOne(mappedBy = "rebel", cascade = CascadeType.ALL)
     //public List<ItemEntity> inventory;
 
@@ -30,7 +30,7 @@ public class RebelEntity {
         name = rebel.getName();
         gender = rebel.getGender();
         age = rebel.getAge();
-        //location = rebel.getLocation().stream().map(location -> new LocationEntity(location().collect(Collectors.toList()));
+//        location = rebel.getLocation().stream().map(location -> new LocationEntity(location().collect(Collectors.toList()));
         //inventory = rebel.inventory.getItem().stream().map(inventory -> new ItenEntity(inventory().collect(Collectors.toList()));
     }
 

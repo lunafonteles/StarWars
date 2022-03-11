@@ -1,22 +1,17 @@
 package com.letscode.gateways.controllers;
 
-import com.letscode.domains.Inventory;
 import com.letscode.domains.Location;
 import com.letscode.domains.Rebel;
-import com.letscode.gateways.controllers.requests.InventoryRequest;
 import com.letscode.gateways.controllers.requests.LocationRequest;
 import com.letscode.gateways.controllers.requests.RebelRequest;
-import com.letscode.gateways.controllers.responses.InventoryResponse;
-import com.letscode.gateways.controllers.responses.LocationResponse;
 import com.letscode.gateways.controllers.responses.RebelResponse;
-import com.letscode.usecases.CreateRebel;
-import com.letscode.usecases.ReportRebelAsTraitor;
-import com.letscode.usecases.TradeItems;
-import com.letscode.usecases.UpdateLocation;
+import com.letscode.usecases.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/rebels")
@@ -27,6 +22,7 @@ public class RebelController {
     private final ReportRebelAsTraitor reportRebelAsTraitor;
     private final TradeItems tradeItems;
     private final UpdateLocation updateLocation;
+    private final GetRebelById getRebelById;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
@@ -36,31 +32,47 @@ public class RebelController {
         return new RebelResponse(rebelSaved);
     }
 
-    @PutMapping(path = "/location",
+    @PatchMapping (path = "/{id}/location",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public LocationResponse updateLocation (@RequestBody LocationRequest locationRequest) {
+    public RebelResponse updateLocation (Long rebelId, @RequestBody LocationRequest locationRequest) {
         Location location = locationRequest.toDomain();
-
-        Location locationSaved = updateLocation.update(location);
-        return new LocationResponse(locationSaved);
+        Rebel locationSaved = updateLocation.update(location, rebelId);
+        return new RebelResponse(locationSaved);
     }
+
+//    @PatchMapping (path = "/report",
+//            consumes = MediaType.APPLICATION_JSON_VALUE,
+//            produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseStatus(HttpStatus.OK)
+//    public RebelResponse reportRebelAsTraitor (Long id, @RequestBody RebelRequest rebelRequest) {
+//        Rebel rebel = rebelRequest.toDomain();
+//        rebel.getId(id);
+//        Rebel reportSaved = reportRebelAsTraitor.report(rebel);
+//        return new RebelResponse(reportSaved);
+        //todo ajeitar
 
 /*    @PutMapping(path = "/trade",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public InventoryResponse tradeItems (@PathVariable("tarde") Long id, @RequestBody InventoryRequest inventoryRequest) {
+    public InventoryResponse tradeItems (Long id, @RequestBody InventoryRequest inventoryRequest) {
         Inventory inventory = inventoryRequest.toDomain();
         inventory.setItem(inventory.getItem());
 
         Inventory inventorySaved = tradeItems.execute(inventory);
         return new InventoryResponse((inventorySaved));
     }*/
+    //todo: ajeitar
 
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public Optional<Rebel> getById (Long id) {
+        Optional<Rebel> rebel = getRebelById.execute(id);
+        return rebel;
+    }
 
-    //falta o reportRebelAsTraitor()
 
 /*    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)

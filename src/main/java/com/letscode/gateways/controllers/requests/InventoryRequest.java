@@ -21,7 +21,6 @@ public class InventoryRequest {
     private int waterAmount;
     @ApiModelProperty(required = true, value = "Quantidade de comida", example = "1")
     private int foodAmount;
-    private int points;
 
     public Inventory toDomain() {
         return Inventory.builder()
