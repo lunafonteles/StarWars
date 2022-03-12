@@ -17,7 +17,11 @@ public class SwaggerConfiguration {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.letscode.gateways.controllers"))
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                .apiInfo(buildApiInfo());
+    }
 
+    private ApiInfo buildApiInfo() {
+        return new ApiInfoBuilder().title("Star Wars API").description("Star Wars Resistance Social Network").build();
     }
 }
