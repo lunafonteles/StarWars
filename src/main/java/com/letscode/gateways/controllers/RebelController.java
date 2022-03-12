@@ -11,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/rebels")
@@ -23,6 +25,7 @@ public class RebelController {
     private final TradeItems tradeItems;
     private final UpdateLocation updateLocation;
     private final GetRebelById getRebelById;
+    private final ListRebels listRebels;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
@@ -74,12 +77,12 @@ public class RebelController {
     }
 
 
-/*    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<RebelResponse> listRebels () {
         List<Rebel> rebels = listRebels.execute();
         return rebels.stream().map(RebelResponse::new).collect(Collectors.toList());
-    }*/
+    }
 
     //n sei se precisa
 }

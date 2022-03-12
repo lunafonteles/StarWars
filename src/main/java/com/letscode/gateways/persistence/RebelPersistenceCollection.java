@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Profile("collection")
 @Component
@@ -56,8 +53,7 @@ public class RebelPersistenceCollection implements RebelPersistenceGateway {
 
     @Override
     public List<Rebel> getAll() {
-        return null;
-        //todo
+        return new ArrayList<>(rebels.values());
     }
 
     @Override
