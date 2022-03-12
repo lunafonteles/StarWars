@@ -3,7 +3,6 @@ import com.letscode.domains.Rebel;
 import com.letscode.exceptions.ValidationException;
 import com.letscode.gateways.RebelPersistenceGateway;
 
-import com.letscode.gateways.persistence.RebelPersistenceH2;
 import com.letscode.usecases.validators.CreateRebelValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
