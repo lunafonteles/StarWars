@@ -42,16 +42,16 @@ public class RebelController {
         return new RebelResponse(locationSaved);
     }
 
-//    @PatchMapping (path = "/report",
-//            consumes = MediaType.APPLICATION_JSON_VALUE,
-//            produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.OK)
-//    public RebelResponse reportRebelAsTraitor (Long id, @RequestBody RebelRequest rebelRequest) {
-//        Rebel rebel = rebelRequest.toDomain();
-//        rebel.getId(id);
-//        Rebel reportSaved = reportRebelAsTraitor.report(rebel);
-//        return new RebelResponse(reportSaved);
+    @PatchMapping (path = "/{id}/report",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public RebelResponse reportRebelAsTraitor (Long id, @RequestBody RebelRequest rebelRequest) {
+        Rebel rebel = rebelRequest.toDomain();
+        Rebel accusationsSaved = reportRebelAsTraitor.report(rebel);
+        return new RebelResponse(accusationsSaved);
         //todo ajeitar
+    }
 
 /*    @PutMapping(path = "/trade",
             consumes = MediaType.APPLICATION_JSON_VALUE,

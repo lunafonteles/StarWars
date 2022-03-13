@@ -17,7 +17,7 @@ public class ReportRebelAsTraitor {
     public RebelPersistenceGateway rebelPersistenceGateway;
     public ReportRebelValidator reportRebelValidator;
 
-    public void report (Rebel rebel){
+    public Rebel report (Rebel rebel){
         Rebel accusedRebel = rebelPersistenceGateway.getByName(rebel); //apenas se o rebelde não já ser traidor
         int accusationsAmount = accusedRebel.getAccusationsAmount();
 
@@ -29,5 +29,6 @@ public class ReportRebelAsTraitor {
             accusedRebel.setTraitor(true);
             rebelPersistenceGateway.saveTraitor(accusedRebel);
         }
+        return accusedRebel;
     }
 }
