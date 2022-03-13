@@ -14,6 +14,7 @@ public class RebelResponse {
     private String gender;
     private Location location;
     private Inventory inventory;
+    private boolean isTraitor;
 
     public RebelResponse(Rebel rebel) {
         id = rebel.getId();
@@ -22,5 +23,6 @@ public class RebelResponse {
         gender = rebel.getGender();
         location = rebel.getLocation();
         inventory = rebel.getInventory();
+        isTraitor = rebel.isTraitor();
     }
 }

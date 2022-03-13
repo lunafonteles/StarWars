@@ -3,6 +3,7 @@ package com.letscode.gateways.controllers;
 import com.letscode.domains.Inventory;
 import com.letscode.domains.Location;
 import com.letscode.domains.Rebel;
+import com.letscode.exceptions.ValidationException;
 import com.letscode.gateways.controllers.requests.TradeRequest;
 import com.letscode.gateways.controllers.requests.LocationRequest;
 import com.letscode.gateways.controllers.requests.RebelRequest;
@@ -11,7 +12,9 @@ import com.letscode.usecases.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,50 +33,63 @@ public class RebelController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public RebelResponse createRebel (@RequestBody RebelRequest rebelRequest) {
-        Rebel rebel = rebelRequest.toDomain();
-        Rebel rebelSaved = createRebel.create(rebel);
-        return new RebelResponse(rebelSaved);
+    public RebelResponse createRebel(@RequestBody RebelRequest rebelRequest) {
+        try {
+            Rebel rebel = rebelRequest.toDomain();
+            Rebel rebelSaved = createRebel.create(rebel);
+            return new RebelResponse(rebelSaved);
+
+        } catch (Exception ex) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, ex.getMessage());
+        }
     }
 
-    @PatchMapping (path = "/{id}/location",
+    @PatchMapping(path = "/{id}/location",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public RebelResponse updateLocation (Long rebelId, @RequestBody LocationRequest locationRequest) {
-        Location location = locationRequest.toDomain();
-        Rebel locationSaved = updateLocation.update(location, rebelId);
-        return new RebelResponse(locationSaved);
+    public RebelResponse updateLocation(Long rebelId, @RequestBody LocationRequest locationRequest) {
+        try {
+            Location location = locationRequest.toDomain();
+            Rebel locationSaved = updateLocation.update(location, rebelId);
+            return new RebelResponse(locationSaved);
+        } catch (Exception ex) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, ex.getMessage());
+        }
+
     }
 
-    @PatchMapping (path = "/{id}/report",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
+    @PatchMapping(path = "/{id}/report",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public RebelResponse reportRebelAsTraitor (Long id, @RequestBody RebelRequest rebelRequest) {
-        Rebel rebel = rebelRequest.toDomain();
-        Rebel accusationsSaved = reportRebelAsTraitor.report(rebel);
-        return new RebelResponse(accusationsSaved);
-        //todo ajeitar
+    public ResponseEntity<RebelResponse> reportRebelAsTraitor(Long id) {
+        try {
+            Rebel accusationsSaved = reportRebelAsTraitor.report(id);
+            return ResponseEntity.status(HttpStatus.OK).body(new RebelResponse(accusationsSaved));
+        } catch (ValidationException ex) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, ex.getMessage());
+        }
     }
 
     @PutMapping(path = "/trade",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public boolean tradeItems (Long rebel1Id, Long rebel2Id, @RequestBody TradeRequest tradeRequest) {
-        try{
+    public boolean tradeItems(Long rebel1Id, Long rebel2Id, @RequestBody TradeRequest tradeRequest) {
+        try {
             tradeItems.trade(rebel1Id, rebel2Id, tradeRequest.getGivenItems(), tradeRequest.getReceiveItems());
             return true;
-        }catch(Exception ex){
-            return false;
+        } catch (Exception ex) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, ex.getMessage());
         }
     }
-    //todo: ajeitar
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public Rebel getById (Long id) {
+    public Rebel getById(Long id) {
         Rebel rebel = getRebelById.execute(id);
         return rebel;
     }
@@ -81,7 +97,7 @@ public class RebelController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<RebelResponse> listRebels () {
+    public List<RebelResponse> listRebels() {
         List<Rebel> rebels = listRebels.execute();
         return rebels.stream().map(RebelResponse::new).collect(Collectors.toList());
     }

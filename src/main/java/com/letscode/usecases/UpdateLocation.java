@@ -29,5 +29,4 @@ public class UpdateLocation {
         return rebelPersistenceGateway.updateLocation(location, rebelId);
     }
     //apenas atualizar, nao precisa armazenar o historico
-    //todo refazer
 }

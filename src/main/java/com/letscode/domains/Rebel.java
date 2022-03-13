@@ -16,7 +16,6 @@ public class Rebel {
     private Inventory inventory;
     private boolean isTraitor = false;
     private int accusationsAmount = 0;
-
 }
 
 
