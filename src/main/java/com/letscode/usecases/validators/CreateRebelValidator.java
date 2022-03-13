@@ -40,6 +40,12 @@ public class CreateRebelValidator {
         if (rebel.getInventory() == null) {
             validationErrors.add("Inventário obrigatório");
         }
+        if (rebel.getInventory().getPoints() < 6){
+            validationErrors.add("Os pontos do inventário não podem ser inferir a 6");
+        }
+        if (rebel.getInventory().getPoints() > 6){
+            validationErrors.add("Os pontos do inventário não podem ultrapassar a 6");
+        }
 
         return validationErrors;
     }
