@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Profile("collection")
 @Component
@@ -43,11 +40,10 @@ public class RebelPersistenceCollection implements RebelPersistenceGateway {
         return rebel;
     }
 
-    @Override
-    public Rebel tradeItems(Inventory inventory) {
-        return null;
-        //todo
-    }
+//    @Override
+//    public Rebel tradeItems(Inventory inventory, Long id) {
+//        return null;
+//    }
 
     @Override
     public boolean existsById(Long id) {
@@ -56,13 +52,12 @@ public class RebelPersistenceCollection implements RebelPersistenceGateway {
 
     @Override
     public List<Rebel> getAll() {
-        return null;
-        //todo
+        return new ArrayList<>(rebels.values());
     }
 
     @Override
-    public Optional<Rebel> getById(Long id) {
-        return Optional.ofNullable(rebels.get(id));
+    public Rebel getById(Long id) {
+        return rebels.get(id);
     }
 
     @Override

@@ -14,7 +14,7 @@ public class GetRebelById {
 
     private final RebelPersistenceGateway rebelPersistenceGateway;
 
-    public Optional<Rebel> execute(Long id) {
+    public Rebel execute(Long id) {
         if (id == null) {
             throw new ValidationException("id é obrigatorio");
         }

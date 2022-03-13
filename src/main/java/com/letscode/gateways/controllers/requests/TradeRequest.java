@@ -11,26 +11,12 @@ import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
-public class InventoryRequest {
+public class TradeRequest {
 
-    @ApiModelProperty(required = true, value = "Quantidade de armas", example = "1")
-    private int gunsAmount;
-    @ApiModelProperty(required = true, value = "Quantidade de munição", example = "1")
-    private int munitionAmount;
-    @ApiModelProperty(required = true, value = "Quantidade de água", example = "1")
-    private int waterAmount;
-    @ApiModelProperty(required = true, value = "Quantidade de comida", example = "1")
-    private int foodAmount;
-
-    public Inventory toDomain() {
-        return Inventory.builder()
-                .gunsAmount(gunsAmount)
-                .munitionAmount(munitionAmount)
-                .waterAmount(waterAmount)
-                .foodAmount(foodAmount)
-                .build();
-    }
-
+    @ApiModelProperty(required = true, value = "Items a receber")
+    private Inventory givenItems;
+    @ApiModelProperty(required = true, value = "Items a enviar")
+    private Inventory receiveItems;
 
    /* @ApiModelProperty(required = true, value = "Identificador do inventario", example = "1")
     private Long id;

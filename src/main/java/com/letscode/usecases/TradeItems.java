@@ -1,15 +1,48 @@
 package com.letscode.usecases;
 
 import com.letscode.domains.Inventory;
+import com.letscode.domains.Rebel;
+import com.letscode.exceptions.ValidationException;
+import com.letscode.gateways.RebelPersistenceGateway;
+import com.letscode.usecases.validators.TradeItemsValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class TradeItems {
-    public Inventory execute(Inventory inventory) {
-        return null;
+
+    private final RebelPersistenceGateway rebelPersistenceGateway;
+    private final TradeItemsValidator tradeItemsValidator;
+
+    public void trade(Long rebel1Id, Long rebel2Id, Inventory givenItems, Inventory receivedItems) {
+
+        Rebel rebel1 = rebelPersistenceGateway.getById(rebel1Id);
+        Rebel rebel2 = rebelPersistenceGateway.getById(rebel2Id);
+
+
+        if (tradeItemsValidator.oneOfThemIsTraitor(rebel1, rebel2)) {
+            throw new ValidationException("Um deles é traidor");
+        }
+        if (!tradeItemsValidator.hasTheSamePoints(givenItems, receivedItems)) {
+            throw new ValidationException("A quantidade de pontos a trocar é diferente");
+        }
+        if (!tradeItemsValidator.rebelHasTheItemsToTrade(rebel1, givenItems)
+                || !tradeItemsValidator.rebelHasTheItemsToTrade(rebel2, receivedItems)) {
+            throw new ValidationException("Um dos rebeldes não tem itens para concluir a troca");
+        }
+
+        updateInventory(rebel1, receivedItems, givenItems);
+        updateInventory(rebel2, givenItems, receivedItems);
+
     }
-    //deverão oferecer mesma quantidade de pontos. Ex: 1 arma e 1 água (1 x 4 + 1 x 2) valem 6 comidas (6 x 1) ou 2 munições (2 x 3).
-    //nao precisa armazenar troca, apenas atualizar os inventarios
+
+    private void updateInventory(Rebel rebel, Inventory givenItems, Inventory receivedItems) {
+        rebel.getInventory().setGunsAmount(rebel.getInventory().getGunsAmount() - givenItems.getGunsAmount() + receivedItems.getGunsAmount());
+        rebel.getInventory().setMunitionAmount(rebel.getInventory().getMunitionAmount() - givenItems.getMunitionAmount() + receivedItems.getMunitionAmount());
+        rebel.getInventory().setWaterAmount(rebel.getInventory().getWaterAmount() - givenItems.getWaterAmount() + receivedItems.getWaterAmount());
+        rebel.getInventory().setFoodAmount(rebel.getInventory().getFoodAmount() - givenItems.getFoodAmount() + receivedItems.getFoodAmount());
+
+        rebelPersistenceGateway.save(rebel);
+    }
 }
