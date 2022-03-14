@@ -40,10 +40,10 @@ public class RebelPersistenceCollection implements RebelPersistenceGateway {
         return rebel;
     }
 
-//    @Override
-//    public Rebel tradeItems(Inventory inventory, Long id) {
-//        return null;
-//    }
+    @Override
+    public Rebel tradeItems(Long rebel1Id, Long rebel2Id, Inventory givenItems, Inventory receivedItems) {
+        return  null;
+    }
 
     @Override
     public boolean existsById(Long id) {

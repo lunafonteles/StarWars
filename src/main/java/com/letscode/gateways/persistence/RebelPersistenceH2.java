@@ -5,7 +5,6 @@ import com.letscode.domains.Rebel;
 import com.letscode.gateways.RebelPersistenceGateway;
 import com.letscode.gateways.persistence.Entities.RebelEntity;
 import com.letscode.gateways.persistence.repositories.RebelH2Repository;
-import io.swagger.models.auth.In;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -57,10 +56,10 @@ public class RebelPersistenceH2 implements RebelPersistenceGateway {
         return null;
     }
 
-//    @Override
-//    public Rebel tradeItems(Inventory inventory, Long id) {
-//        return null;
-//    }
+    @Override
+    public Rebel tradeItems(Long rebel1Id, Long rebel2Id, Inventory givenItems, Inventory receivedItems) {
+        return null;
+    }
 
     //porcentagem de traidores
     //porcentagem de rebeldes
