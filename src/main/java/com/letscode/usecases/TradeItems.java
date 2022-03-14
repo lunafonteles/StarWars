@@ -25,52 +25,8 @@ public class TradeItems {
         if (!validationErrors.isEmpty()) {
             throw new ValidationException(validationErrors);
         }
-        if (tradeItemsValidator.oneOfThemIsTraitor(rebel1, rebel2)) {
-            throw new ValidationException("Um deles é traidor");
-        }
-        if (!tradeItemsValidator.hasTheSamePoints(givenItems, receivedItems)) {
-            throw new ValidationException("A quantidade de pontos a trocar é diferente");
-        }
-        if (!tradeItemsValidator.rebelHasTheItemsToTrade(rebel1, givenItems)
-                || !tradeItemsValidator.rebelHasTheItemsToTrade(rebel2, receivedItems)) {
-            throw new ValidationException("Um dos rebeldes não tem itens para concluir a troca");
-        }
 
         rebelPersistenceGateway.updateInventory(rebel1, receivedItems, givenItems);
         rebelPersistenceGateway.updateInventory(rebel2, givenItems, receivedItems);
     }
-
-//    private void updateInventory(Rebel rebel, Inventory givenItems, Inventory receivedItems) {
-//        rebel.getInventory().setGunsAmount(rebel.getInventory().getGunsAmount() - givenItems.getGunsAmount() + receivedItems.getGunsAmount());
-//        rebel.getInventory().setMunitionAmount(rebel.getInventory().getMunitionAmount() - givenItems.getMunitionAmount() + receivedItems.getMunitionAmount());
-//        rebel.getInventory().setWaterAmount(rebel.getInventory().getWaterAmount() - givenItems.getWaterAmount() + receivedItems.getWaterAmount());
-//        rebel.getInventory().setFoodAmount(rebel.getInventory().getFoodAmount() - givenItems.getFoodAmount() + receivedItems.getFoodAmount());
-
-//        rebelPersistenceGateway.updateInventory(rebel, receivedItems, givenItems);
-//        rebelPersistenceGateway.updateInventory(rebel, givenItems, receivedItems);
-
-//        if (tradeItemsValidator.oneOfThemIsTraitor(rebel1, rebel2)) {
-//            throw new ValidationException("Um deles é traidor");
-//        }
-//        if (!tradeItemsValidator.hasTheSamePoints(givenItems, receivedItems)) {
-//            throw new ValidationException("A quantidade de pontos a trocar é diferente");
-//        }
-//        if (!tradeItemsValidator.rebelHasTheItemsToTrade(rebel1, givenItems)
-//            || !tradeItemsValidator.rebelHasTheItemsToTrade(rebel2, receivedItems)) {
-//            throw new ValidationException("Um dos rebeldes não tem itens para concluir a troca");
-//        }
-//
-//        updateInventory(rebel1, receivedItems, givenItems);
-//        updateInventory(rebel2, givenItems, receivedItems);
-//
-//    }
-//
-//    private void updateInventory(Rebel rebel, Inventory givenItems, Inventory receivedItems) {
-//        rebel.getInventory().setGunsAmount(rebel.getInventory().getGunsAmount() - givenItems.getGunsAmount() + receivedItems.getGunsAmount());
-//        rebel.getInventory().setMunitionAmount(rebel.getInventory().getMunitionAmount() - givenItems.getMunitionAmount() + receivedItems.getMunitionAmount());
-//        rebel.getInventory().setWaterAmount(rebel.getInventory().getWaterAmount() - givenItems.getWaterAmount() + receivedItems.getWaterAmount());
-//        rebel.getInventory().setFoodAmount(rebel.getInventory().getFoodAmount() - givenItems.getFoodAmount() + receivedItems.getFoodAmount());
-//
-//        rebelPersistenceGateway.save(rebel);
-//    }
 }
