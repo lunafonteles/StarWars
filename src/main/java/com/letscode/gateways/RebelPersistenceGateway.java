@@ -10,10 +10,7 @@ public interface RebelPersistenceGateway {
 
     Rebel save(Rebel rebel);
     Rebel updateLocation(Location location, Long rebelId);
-//    Rebel tradeItems(Inventory inventory, Long rebelId);
     boolean existsById(Long id);
-    void saveTraitor(Rebel rebel);
-    Rebel getByName(Rebel rebel);
     List<Rebel> getAll();
     Rebel getById(Long id);
 }

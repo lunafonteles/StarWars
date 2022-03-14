@@ -19,8 +19,6 @@ public class RebelRequest {
     private String gender;
     private Location location;
     private Inventory inventory;
-    private boolean isTraitor = false;
-    private int accusationsAmount = 0;
 
     public Rebel toDomain() {
         return Rebel.builder()

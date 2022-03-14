@@ -9,9 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import lombok.val;
 
-
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class UpdateLocation {
@@ -25,8 +22,6 @@ public class UpdateLocation {
         if (!validationErrors.isEmpty()) {
             throw new ValidationException(validationErrors);
         }
-
         return rebelPersistenceGateway.updateLocation(location, rebelId);
     }
-    //apenas atualizar, nao precisa armazenar o historico
 }

@@ -20,7 +20,6 @@ public class TradeItems {
         Rebel rebel1 = rebelPersistenceGateway.getById(rebel1Id);
         Rebel rebel2 = rebelPersistenceGateway.getById(rebel2Id);
 
-
         if (tradeItemsValidator.oneOfThemIsTraitor(rebel1, rebel2)) {
             throw new ValidationException("Um deles é traidor");
         }
@@ -34,7 +33,6 @@ public class TradeItems {
 
         updateInventory(rebel1, receivedItems, givenItems);
         updateInventory(rebel2, givenItems, receivedItems);
-
     }
 
     private void updateInventory(Rebel rebel, Inventory givenItems, Inventory receivedItems) {

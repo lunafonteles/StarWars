@@ -4,7 +4,6 @@ import com.letscode.domains.Rebel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +45,6 @@ public class CreateRebelValidator {
         if (rebel.getInventory().getPoints() > 10){
             validationErrors.add("Os pontos do inventário não podem ultrapassar a 10");
         }
-
         return validationErrors;
     }
 }

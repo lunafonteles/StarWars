@@ -1,9 +1,7 @@
 package com.letscode.gateways.controllers.responses;
 
 import com.letscode.domains.Inventory;
-import com.letscode.domains.Item;
 import lombok.Data;
-import java.util.List;
 
 @Data
 public class InventoryResponse {
@@ -21,12 +19,4 @@ public class InventoryResponse {
         foodAmount = inventory.getFoodAmount();
         points = inventory.getPoints();
     }
-
-    /*private Long id;
-    private List<Item> item;
-
-    public InventoryResponse(Inventory inventory) {
-        id = inventory.getId();
-        item = inventory.getItem();
-    }*/
 }
