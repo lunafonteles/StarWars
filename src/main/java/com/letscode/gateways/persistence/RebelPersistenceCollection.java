@@ -31,8 +31,6 @@ public class RebelPersistenceCollection implements RebelPersistenceGateway {
                 new Inventory(1, 1, 1, 1, 10),
                 false, 0));
     }};
-    private static Map<String, Rebel> traitors = new HashMap<>();
-    private static Map<Long, Rebel> locations = new HashMap<>();
     private static Long rebelId = 4L;
 
     @Override

@@ -12,7 +12,7 @@ public class ReportRebelValidator {
     public List<String> validate(Rebel rebel) {
         List<String> validationErrors = new ArrayList<>();
 
-        if (rebel.isTraitor() == true) return List.of("Essa pessoa já é traidora");
+        if (rebel.isTraitor()) return List.of(rebel.getName() + " já é um(a) traidor(a)");
 
         return validationErrors;
     }
