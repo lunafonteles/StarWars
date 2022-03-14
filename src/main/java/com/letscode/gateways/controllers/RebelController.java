@@ -47,7 +47,7 @@ public class RebelController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public RebelResponse updateLocation(Long rebelId, @RequestBody LocationRequest locationRequest) {
+    public RebelResponse updateLocation(@PathVariable("id") Long rebelId, @RequestBody LocationRequest locationRequest) {
         try {
             Location location = locationRequest.toDomain();
             Rebel locationSaved = updateLocation.update(location, rebelId);
@@ -60,7 +60,7 @@ public class RebelController {
 
     @PatchMapping(path = "/{id}/report",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RebelResponse> reportRebelAsTraitor(Long id) {
+    public ResponseEntity<RebelResponse> reportRebelAsTraitor(@PathVariable Long id) {
         try {
             Rebel accusationsSaved = reportRebelAsTraitor.report(id);
             return ResponseEntity.status(HttpStatus.OK).body(new RebelResponse(accusationsSaved));
@@ -70,7 +70,7 @@ public class RebelController {
         }
     }
 
-    @PutMapping(path = "/trade",
+    @PatchMapping(path = "/trade",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -86,10 +86,7 @@ public class RebelController {
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public Rebel getById(Long id) {
-        Rebel rebel = getRebelById.execute(id);
-        return rebel;
-    }
+    public Rebel getById(@PathVariable Long id) { return getRebelById.execute(id); }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
