@@ -21,7 +21,6 @@ public class LocationEntity {
     public String base;
 
     public LocationEntity (Location location) {
-        id = location.getId();
         latitude = location.getLatitude();
         longitude = location.getLongitude();
         base = location.getBase();

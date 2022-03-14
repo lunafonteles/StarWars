@@ -25,15 +25,6 @@ public class RebelPersistenceH2 implements RebelPersistenceGateway {
         RebelEntity rebelEntity = rebelH2Repository.save(new RebelEntity(rebel));
         return rebelEntity.toDomain();
     }
-    @Override
-        public void saveTraitor(Rebel rebel) {
-        //fazer
-    }
-
-    @Override
-    public Rebel getByName(Rebel rebel) {
-        return null;
-    }
 
     @Override
     public List<Rebel> getAll() {
@@ -62,15 +53,4 @@ public class RebelPersistenceH2 implements RebelPersistenceGateway {
         return null;
     }
 
-//    @Override
-//    public Rebel tradeItems(Inventory inventory, Long id) {
-//        return null;
-//    }
-
-    //porcentagem de traidores
-    //porcentagem de rebeldes
-    //Quantidade média de cada tipo de recurso por rebelde (Ex: 2 armas por rebelde).
-    //Pontos perdidos devido a traidores. obs: como sao esses pontos?
-    //outros requisitos: documentar endpoints e fornecer forma de usa-los
-    //realizar testes
 }

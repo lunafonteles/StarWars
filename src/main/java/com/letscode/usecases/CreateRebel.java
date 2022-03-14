@@ -1,8 +1,8 @@
 package com.letscode.usecases;
+
 import com.letscode.domains.Rebel;
 import com.letscode.exceptions.ValidationException;
 import com.letscode.gateways.RebelPersistenceGateway;
-
 import com.letscode.usecases.validators.CreateRebelValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,6 @@ public class CreateRebel {
         if (!validationErrors.isEmpty()) {
             throw new ValidationException(validationErrors);
         }
-
         return rebelPersistenceGateway.save(rebel);
     }
 

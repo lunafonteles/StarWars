@@ -26,8 +26,6 @@ public class RebelRequest {
         required = true,
         value = "Inventory")
     private Inventory inventory;
-    private boolean isTraitor = false;
-    private int accusationsAmount = 0;
 
     public Rebel toDomain() {
         return Rebel.builder()

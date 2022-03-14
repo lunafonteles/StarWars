@@ -14,7 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,7 +56,6 @@ public class RebelController {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, ex.getMessage());
         }
-
     }
 
     @PatchMapping(path = "/{id}/report",
@@ -90,12 +88,10 @@ public class RebelController {
     @ResponseStatus(HttpStatus.OK)
     public Rebel getById(@PathVariable Long id) { return getRebelById.execute(id); }
 
-
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<RebelResponse> listRebels() {
         List<Rebel> rebels = listRebels.execute();
         return rebels.stream().map(RebelResponse::new).collect(Collectors.toList());
     }
-
 }

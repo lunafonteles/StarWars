@@ -1,10 +1,7 @@
 package com.letscode.domains;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @Builder
@@ -24,9 +21,5 @@ public class Inventory {
         this.points = (gunsAmount * 4) + (munitionAmount * 3) + (waterAmount * 2) + (foodAmount);
     }
 }
-
-//obrigatorio ser criado junto c rebelde, n sei se tem q ser sempre igual
-//rebelde n pode manipular itens, somente por troca
-//1 arma = 4 pt ; 1 Munição = 3 pt ; 1 Água = 2 pt ; 1 Comida = 1 pt
 
 

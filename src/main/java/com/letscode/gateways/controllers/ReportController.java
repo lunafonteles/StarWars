@@ -1,7 +1,5 @@
 package com.letscode.gateways.controllers;
 
-import com.letscode.domains.Rebel;
-import com.letscode.gateways.controllers.responses.RebelResponse;
 import com.letscode.usecases.reports.DataReports;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -36,10 +34,6 @@ public class ReportController {
                     HttpStatus.BAD_REQUEST, ("Lista vazia de Traidores"));
         }
     }
-
-
-
-
 }
 
 

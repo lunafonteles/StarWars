@@ -2,10 +2,8 @@ package com.letscode.usecases.reports;
 
 import com.letscode.domains.Rebel;
 import com.letscode.gateways.RebelPersistenceGateway;
-import com.letscode.usecases.ListRebels;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,5 +36,4 @@ public class DataReports {
         }
         return ( (double) traitorList.size() / (double) list.size() ) * 100;
     }
-
 }
