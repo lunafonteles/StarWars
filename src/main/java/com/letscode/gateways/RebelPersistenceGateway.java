@@ -12,10 +12,6 @@ public interface RebelPersistenceGateway {
 
     Rebel updateLocation(Location location, Long rebelId);
 
-    boolean existsById(Long id);
-
-    boolean existsById(Long id);
-
     List<Rebel> getAll();
 
     Rebel getById(Long id);

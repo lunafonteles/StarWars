@@ -53,11 +53,6 @@ public class RebelPersistenceCollection implements RebelPersistenceGateway {
     }
 
     @Override
-    public boolean existsById(Long id) {
-        return rebels.containsKey(id);
-    }
-
-    @Override
     public List<Rebel> getAll() {
         return new ArrayList<>(rebels.values());
     }

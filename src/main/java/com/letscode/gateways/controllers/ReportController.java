@@ -34,6 +34,18 @@ public class ReportController {
                     HttpStatus.BAD_REQUEST, ("Lista vazia de Traidores"));
         }
     }
+
+    @GetMapping(path = "/lostPoints", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public double reportLostPoints () {
+        try{
+            return dataReports.percentageOfTraitor();
+        }
+        catch (Exception ex) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, ("Lista vazia de Traidores"));
+        }
+    }
 }
 
 

@@ -32,19 +32,13 @@ public class RebelPersistenceH2 implements RebelPersistenceGateway {
     }
 
     @Override
-    public boolean existsById(Long id) {
-        return false;
-    }
-
-    @Override
     public Rebel getById(Long id) {
         return null;
     }
 
-    @Override
     public void updateInventory(Rebel rebel1, Inventory receivedItems, Inventory givenItems) {
 
-    }
+     }
 
     @Override
     public Rebel updateLocation(Location location, Long id){

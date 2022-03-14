@@ -12,23 +12,23 @@ import java.util.Objects;
 @Component
 @RequiredArgsConstructor
 public class TradeItemsValidator {
-//    public boolean oneOfThemIsTraitor(Rebel rebel1, Rebel rebel2){
-//        return rebel1.isTraitor() || rebel2.isTraitor();
-//    }
-//
-//    public boolean hasTheSamePoints(Inventory givenItems, Inventory receivedItemns){
-//        return givenItems.getPoints() == receivedItemns.getPoints();
-//    }
-//
-//    public boolean rebelHasTheItemsToTrade(Rebel rebel, Inventory itemsToTrade){
-//        Inventory rebelInventory = rebel.getInventory();
-//        boolean hasTheAmountOfFood = rebelInventory.getFoodAmount() >= itemsToTrade.getFoodAmount();
-//        boolean hasTheAmountOfGuns = rebelInventory.getGunsAmount() >= itemsToTrade.getGunsAmount();
-//        boolean hasTheAmountOfWater = rebelInventory.getWaterAmount() >= itemsToTrade.getWaterAmount();
-//        boolean hasTheAmountOfMunition = rebelInventory.getMunitionAmount() >= itemsToTrade.getMunitionAmount();
-//
-//        return (hasTheAmountOfFood && hasTheAmountOfGuns && hasTheAmountOfMunition && hasTheAmountOfWater);
-//    }
+    public boolean oneOfThemIsTraitor(Rebel rebel1, Rebel rebel2){
+        return rebel1.isTraitor() || rebel2.isTraitor();
+    }
+
+    public boolean hasTheSamePoints(Inventory givenItems, Inventory receivedItemns){
+        return givenItems.getPoints() == receivedItemns.getPoints();
+    }
+
+    public boolean rebelHasTheItemsToTrade(Rebel rebel, Inventory itemsToTrade){
+        Inventory rebelInventory = rebel.getInventory();
+        boolean hasTheAmountOfFood = rebelInventory.getFoodAmount() >= itemsToTrade.getFoodAmount();
+        boolean hasTheAmountOfGuns = rebelInventory.getGunsAmount() >= itemsToTrade.getGunsAmount();
+        boolean hasTheAmountOfWater = rebelInventory.getWaterAmount() >= itemsToTrade.getWaterAmount();
+        boolean hasTheAmountOfMunition = rebelInventory.getMunitionAmount() >= itemsToTrade.getMunitionAmount();
+
+        return (hasTheAmountOfFood && hasTheAmountOfGuns && hasTheAmountOfMunition && hasTheAmountOfWater);
+    }
 
     public List<String> validate(Rebel rebel1, Rebel rebel2, Inventory givenItems, Inventory receivedItems) {
         List<String> validationErrors = new ArrayList<>();

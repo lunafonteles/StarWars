@@ -22,7 +22,6 @@ public class DataReports {
             }
         }
         double reportValue = ( (double) rebelList.size() / (double) list.size() ) * 100;
-        System.out.println("Value: " + reportValue);
         return reportValue;
     }
 
