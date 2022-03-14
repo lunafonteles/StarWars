@@ -51,6 +51,11 @@ public class RebelPersistenceH2 implements RebelPersistenceGateway {
     }
 
     @Override
+    public void updateInventory(Rebel rebel1, Inventory receivedItems, Inventory givenItems) {
+
+    }
+
+    @Override
     public Rebel updateLocation(Location location, Long id){
 //        RebelEntity rebelEntity = rebelH2Repository.save(new RebelEntity(rebel));
 //        return rebelEntity.toDomain();

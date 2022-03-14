@@ -1,4 +1,5 @@
 package com.letscode.gateways.persistence;
+
 import com.letscode.domains.Inventory;
 import com.letscode.domains.Location;
 import com.letscode.domains.Rebel;
@@ -61,8 +62,33 @@ public class RebelPersistenceCollection implements RebelPersistenceGateway {
     }
 
     @Override
+    public void updateInventory(Rebel rebel, Inventory receivedItems, Inventory givenItems) {
+        rebel.getInventory().setGunsAmount(
+            rebel.getInventory().getGunsAmount()
+                - givenItems.getGunsAmount()
+                + receivedItems.getGunsAmount());
+
+        rebel.getInventory().setMunitionAmount(
+            rebel.getInventory().getMunitionAmount()
+                - givenItems.getMunitionAmount()
+                + receivedItems.getMunitionAmount());
+
+        rebel.getInventory().setWaterAmount(
+            rebel.getInventory().getWaterAmount()
+                - givenItems.getWaterAmount()
+                + receivedItems.getWaterAmount());
+
+        rebel.getInventory().setFoodAmount(
+            rebel.getInventory().getFoodAmount()
+                - givenItems.getFoodAmount()
+                + receivedItems.getFoodAmount());
+
+        save(rebel);
+    }
+
+    @Override
     public void saveTraitor(Rebel rebel) {
-        rebels.remove(rebel.getName());
+        rebels.remove(rebel.getId());
         traitors.put(rebel.getName(), rebel);
     }
 
