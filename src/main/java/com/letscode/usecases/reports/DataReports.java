@@ -15,7 +15,7 @@ public class DataReports {
 
     private final RebelPersistenceGateway rebelPersistenceGateway;
 
-    public float percentageOfRebel() {
+    public double percentageOfRebel() {
         List<Rebel> list = rebelPersistenceGateway.getAll();
         List<Rebel> rebelList = new ArrayList<>();
         for (Rebel rebel : list) {
@@ -23,11 +23,12 @@ public class DataReports {
                 rebelList.add(rebel);
             }
         }
-
-        return ( rebelList.size() / list.size() ) * 100;
+        double reportValue = ( (double) rebelList.size() / (double) list.size() ) * 100;
+        System.out.println("Value: " + reportValue);
+        return reportValue;
     }
 
-    public float percentageOfTraitor() {
+    public double percentageOfTraitor() {
         List<Rebel> list = rebelPersistenceGateway.getAll();
         List<Rebel> traitorList = new ArrayList<>();
         for (Rebel rebel : list) {
@@ -35,7 +36,7 @@ public class DataReports {
                 traitorList.add(rebel);
             }
         }
-        return ( traitorList.size() / list.size() ) * 100;
+        return ( (double) traitorList.size() / (double) list.size() ) * 100;
     }
 
 }
